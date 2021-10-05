@@ -1,0 +1,32 @@
+{
+    "name": "thepublicgood/domains",
+    "description": "TPG Domains CLI",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "THEPUBLICGOOD",
+            "email": "makers@thepublicgood.dev"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TPG\\Domains\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/domains"
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "ext-posix": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^8.63",
+        "nunomaduro/termwind": "dev-master",
+        "spatie/ray": "^1.30"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    }
+}
