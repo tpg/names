@@ -17,13 +17,13 @@ abstract class Command extends SymfonyCommand
     protected string $name;
     protected string $description;
 
-    protected string $key;
+    protected Configuration $configuration;
 
-    public function __construct()
+    public function __construct(Configuration $configuration)
     {
         parent::__construct();
 
-        $this->key = (new Configuration())->key();
+        $this->configuration = $configuration;
     }
 
     protected function configure(): void

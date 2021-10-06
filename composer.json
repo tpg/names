@@ -24,7 +24,8 @@
         "guzzlehttp/guzzle": "^7.3",
         "illuminate/support": "^8.63",
         "nunomaduro/termwind": "dev-master",
-        "spatie/ray": "^1.30"
+        "spatie/ray": "^1.30",
+        "spatie/data-transfer-object": "^3.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

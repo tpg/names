@@ -8,11 +8,26 @@ use Illuminate\Support\Arr;
 
 class Configuration
 {
+    protected array $config;
+
+    public function __construct()
+    {
+        $this->config = $this->getConfiguration();
+    }
+
+    public function isConfigured(): bool
+    {
+        return file_exists($this->getConfigurationDirectory().'config.json');
+    }
+
     public function key(): string
     {
-        $config = $this->getConfiguration();
+        return Arr::get($this->config, 'reseller.key');
+    }
 
-        return Arr::get($config, 'reseller.key');
+    public function testing(): bool
+    {
+        return Arr::get($this->config, 'reseller.testing');
     }
 
     protected function getConfiguration(): array
@@ -31,7 +46,14 @@ class Configuration
         );
     }
 
-    protected function getConfigurationDirectory(): string
+    public function createConfiguration(array $config): void
+    {
+        $path = $this->getConfigurationDirectory().'config.json';
+
+        file_put_contents($path, json_encode($config, JSON_THROW_ON_ERROR));
+    }
+
+    public function getConfigurationDirectory(): string
     {
         return posix_getpwuid(fileowner(__FILE__))['dir'].'/.domains/';
     }

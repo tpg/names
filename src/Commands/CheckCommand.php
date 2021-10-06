@@ -33,7 +33,7 @@ class CheckCommand extends Command
 
         span('Searching '.$sld.' in TLD '.$tld, 'p-1 text-color-blue')->render();
 
-        $check = (new Domains($this->key))->check($sld, $tld);
+        $check = (new Domains($this->configuration->key(), $this->configuration->testing()))->check($sld, $tld);
 
         if ($check) {
             span('Available', 'text-color-green')->render();
