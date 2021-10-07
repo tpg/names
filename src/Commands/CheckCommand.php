@@ -13,7 +13,7 @@ use function Termwind\span;
 
 class CheckCommand extends Command
 {
-    protected string $name = 'check';
+    protected string $name = 'domains:check';
     protected string $description = 'Check if a domain is registered';
 
 
