@@ -1,6 +1,6 @@
 {
-    "name": "thepublicgood/domains",
-    "description": "TPG Domains CLI",
+    "name": "thepublicgood/names",
+    "description": "Domains.co.za reseller CLI util",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
         }
     },
     "bin": [
-        "bin/domains"
+        "bin/names"
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -6,7 +6,7 @@ namespace TPG\Domains\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
 use TPG\Domains\Domains;
-use TPG\Domains\ListingOptions;
+use TPG\Domains\Dto\ListingOptions;
 use TPG\Domains\Traits\RendersCacheLabel;
 use TPG\Domains\Traits\RendersDomainsTable;
 

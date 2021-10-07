@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TPG\Domains;
+namespace TPG\Domains\Dto;
 
 use Spatie\DataTransferObject\DataTransferObject;
 

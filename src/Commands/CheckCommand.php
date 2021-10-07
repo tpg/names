@@ -6,9 +6,7 @@ namespace TPG\Domains\Commands;
 
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
-use TPG\Domains\Configuration;
 use TPG\Domains\Domains;
-use function Termwind\render;
 use function Termwind\span;
 
 class CheckCommand extends Command
@@ -16,15 +14,12 @@ class CheckCommand extends Command
     protected string $name = 'domains:check';
     protected string $description = 'Check if a domain is registered';
 
-
-
     protected function configure(): void
     {
         parent::configure();
 
         $this->addArgument('domain', InputArgument::REQUIRED, 'The domain to check');
     }
-
 
     protected function fire(): int
     {

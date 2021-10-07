@@ -8,6 +8,10 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use TPG\Domains\Dto\Domain;
+use TPG\Domains\Dto\Info;
+use TPG\Domains\Dto\ListingOptions;
+use TPG\Domains\Dto\Response;
 
 class Domains
 {

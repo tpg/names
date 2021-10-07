@@ -7,8 +7,8 @@ namespace TPG\Domains\Traits;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
-use TPG\Domains\Domain;
-use TPG\Domains\Response;
+use TPG\Domains\Dto\Domain;
+use TPG\Domains\Dto\Response;
 
 trait RendersDomainsTable
 {
