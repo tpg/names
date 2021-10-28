@@ -23,9 +23,10 @@
         "ext-posix": "*",
         "guzzlehttp/guzzle": "^7.3",
         "illuminate/support": "^8.63",
-        "nunomaduro/termwind": "dev-master",
         "spatie/ray": "^1.30",
-        "spatie/data-transfer-object": "^3.7"
+        "spatie/data-transfer-object": "^3.7",
+        "symfony/process": "^5.3",
+        "symfony/console": "^5.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

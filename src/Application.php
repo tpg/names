@@ -14,7 +14,7 @@ use TPG\Domains\Commands\DomainsListCommand;
 class Application
 {
     protected string $name = 'Domains';
-    protected string $version = '0.0.2';
+    protected string $version = '0.1.0';
 
     protected Configuration $configuration;
     protected ConsoleApplication $consoleApplication;

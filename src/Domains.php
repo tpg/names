@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace TPG\Domains;
 
 use Carbon\Carbon;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use TPG\Domains\Dto\Domain;
 use TPG\Domains\Dto\Info;
 use TPG\Domains\Dto\ListingOptions;
@@ -105,7 +105,7 @@ class Domains
         ]);
 
         if ($response->getStatusCode() !== 200) {
-            throw new \Exception('Bad response from domains.co.za');
+            throw new Exception('Bad response from domains.co.za');
         }
 
         return json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);

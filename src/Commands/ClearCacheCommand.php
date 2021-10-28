@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TPG\Domains\Commands;
 
 use TPG\Domains\Cache;
-use function Termwind\span;
 
 class ClearCacheCommand extends Command
 {
@@ -15,7 +14,7 @@ class ClearCacheCommand extends Command
     protected function fire(): int
     {
         (new Cache())->clear();
-        span('Cache cleared', 'text-color-green')->render();
+        $this->output->writeln('<fg=green>Cache cleared</>');
 
         return 0;
     }

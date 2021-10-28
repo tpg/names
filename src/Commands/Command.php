@@ -39,7 +39,7 @@ abstract class Command extends SymfonyCommand
         $this->input = $input;
         $this->output = $output;
 
-        return (int) $this->fire();
+        return $this->fire();
     }
 
     protected function option(string $key): mixed

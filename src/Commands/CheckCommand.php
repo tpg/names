@@ -7,7 +7,6 @@ namespace TPG\Domains\Commands;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 use TPG\Domains\Domains;
-use function Termwind\span;
 
 class CheckCommand extends Command
 {
@@ -26,16 +25,16 @@ class CheckCommand extends Command
         $sld = Str::before($this->argument('domain'), '.');
         $tld = Str::after($this->argument('domain'), '.');
 
-        span('Searching '.$sld.' in TLD '.$tld, 'p-1 text-color-blue')->render();
+        $this->output->writeln('Searching '.$sld.' in TLD '.$tld.'... ');
 
         $check = (new Domains($this->configuration->key(), $this->configuration->testing()))->check($sld, $tld);
 
         if ($check) {
-            span('Available', 'text-color-green')->render();
+            $this->output->writeln('<fg=green>Available</>');
             return 0;
         }
 
-        span('Unavailable', 'text-color-red')->render();
+        $this->output->writeln('<fg=red>Unavailable</>');
         return 0;
     }
 }

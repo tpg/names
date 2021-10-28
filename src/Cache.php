@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace TPG\Domains;
 
 use Carbon\Carbon;
+use Closure;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class Cache
 {
@@ -18,7 +17,7 @@ class Cache
         $this->configuration = new Configuration();
     }
 
-    public function remember(string $key, Carbon $expiry, \Closure $callback): mixed
+    public function remember(string $key, Carbon $expiry, Closure $callback): mixed
     {
         if ($cache = $this->get($key)) {
             return $cache;
