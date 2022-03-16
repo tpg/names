@@ -7,6 +7,7 @@ namespace TPG\Domains;
 use Symfony\Component\Console\Application as ConsoleApplication;
 use TPG\Domains\Commands\CheckCommand;
 use TPG\Domains\Commands\ClearCacheCommand;
+use TPG\Domains\Commands\DnsRecordsCommand;
 use TPG\Domains\Commands\DomainsExpiringCommand;
 use TPG\Domains\Commands\InstallCommand;
 use TPG\Domains\Commands\DomainsListCommand;
@@ -24,12 +25,18 @@ class Application
         ClearCacheCommand::class,
         DomainsListCommand::class,
         DomainsExpiringCommand::class,
+        DnsRecordsCommand::class,
     ];
 
 
     public function __construct()
     {
         $this->configuration = new Configuration();
+
+        if ($this->configuration->isConfigured()) {
+            $this->configuration->loadConfiguration();
+        }
+
 
         $this->consoleApplication = new ConsoleApplication($this->name, $this->version);
     }

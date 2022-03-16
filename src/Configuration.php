@@ -11,11 +11,6 @@ class Configuration
 {
     protected array $config;
 
-    public function __construct()
-    {
-        $this->config = $this->getConfiguration();
-    }
-
     public function isConfigured(): bool
     {
         return file_exists($this->getConfigurationDirectory().'config.json');
@@ -28,7 +23,12 @@ class Configuration
 
     public function testing(): bool
     {
-        return Arr::get($this->config, 'reseller.testing');
+        return Arr::get($this->config, 'reseller.testing', false);
+    }
+
+    public function loadConfiguration(): void
+    {
+        $this->config = $this->getConfiguration();
     }
 
     protected function getConfiguration(): array
@@ -36,7 +36,7 @@ class Configuration
         $path = $this->getConfigurationDirectory().'config.json';
 
         if (! file_exists($path)) {
-            throw new Exception('No configuration. Run install');
+            throw new \RuntimeException('No configuration. Run install');
         }
 
         return json_decode(
@@ -49,7 +49,15 @@ class Configuration
 
     public function createConfiguration(array $config): void
     {
-        $path = $this->getConfigurationDirectory().'config.json';
+        $dir = $this->getConfigurationDirectory();
+
+        if (!is_dir($dir)) {
+            if (! mkdir($dir, recursive: true) && ! is_dir($dir)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $dir));
+            }
+        }
+
+        $path = $dir.'config.json';
 
         file_put_contents($path, json_encode($config, JSON_THROW_ON_ERROR));
     }

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use TPG\Domains\Dto\Domain;
 use TPG\Domains\Dto\Info;
 use TPG\Domains\Dto\ListingOptions;
@@ -83,6 +84,26 @@ class Domains
         ));
 
         return $response;
+    }
+
+    public function dns(string $sld, string $tld): Collection
+    {
+        $endpoint = $this->endpoint('domain/dns/recordList');
+
+        $dns = $this->request($endpoint, [
+            'tld' => $tld,
+            'sld' => $sld,
+        ]);
+
+        return collect($dns['arrRecords'])->map(function ($record) {
+            return [
+                $record['type'],
+                $record['name'],
+                $record['content'],
+                $record['ttl'],
+                $record['prio']
+            ];
+        });
     }
 
     protected function endpoint(string $uri): string
