@@ -1,3 +1,5 @@
+[![Tests](https://github.com/tpg/names/actions/workflows/tests.yml/badge.svg)](https://github.com/tpg/names/actions/workflows/tests.yml)
+
 # PHP client for the domains.co.za reseller API.
 
 A full-featured PHP client for working with the domains.co.za reseller API. This is brand new and is a work in progress. It should not be used in production. It is likely to change significantly before reaching version 1.0.
